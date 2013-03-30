@@ -1,17 +1,20 @@
 source 'https://rubygems.org'
 
-gem 'rails',     path: '/Users/murphy/ruby/rails'
-gem 'arel',      github: 'rails/arel'
+gem 'rails', path: '/Users/murphy/ruby/rails'
+
+gem 'arel',                            github: 'rails/arel'
 gem 'activerecord-deprecated_finders', github: 'rails/activerecord-deprecated_finders'
 
 gem 'mysql2'
+gem 'paperclip', github: 'thoughtbot/paperclip'
 
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
   gem 'sprockets-rails', github: 'rails/sprockets-rails'
-  gem 'sass-rails',   github: 'rails/sass-rails'
-  gem 'coffee-rails', github: 'rails/coffee-rails'
+  gem 'sass-rails',      github: 'rails/sass-rails'
+  gem 'coffee-rails',    github: 'rails/coffee-rails'
+  gem 'haml-rails',      github: 'indirect/haml-rails'
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   # gem 'therubyracer', platforms: :ruby
@@ -22,10 +25,7 @@ end
 gem 'jquery-rails', github: 'rails/jquery-rails'
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
-gem 'turbolinks'
-
-# Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
-gem 'jbuilder', '~> 1.0.1'
+# gem 'turbolinks'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
@@ -37,4 +37,4 @@ gem 'jbuilder', '~> 1.0.1'
 # gem 'capistrano', group: :development
 
 # To use debugger
-# gem 'debugger', group: [:development, :test]
+gem 'debugger', group: [:development, :test]

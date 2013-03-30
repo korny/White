@@ -1,0 +1,27 @@
+%h1 Listing images
+
+%table
+  %tr
+    %th Title
+    %th Caption
+    %th Height
+    %th Width
+    %th Gallery
+    %th
+    %th
+    %th
+
+  - @images.each do |image|
+    %tr
+      %td= image.title
+      %td= image.caption
+      %td= image.height
+      %td= image.width
+      %td= image.gallery
+      %td= link_to 'Show', image
+      %td= link_to 'Edit', edit_image_path(image)
+      %td= link_to 'Destroy', image, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Image', new_image_path
