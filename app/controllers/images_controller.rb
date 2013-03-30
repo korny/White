@@ -21,6 +21,12 @@ class ImagesController < ApplicationController
 
   # POST /images
   def create
+    if params[:file]
+      Rails.logger.debug { params[:file] }
+      sleep 1
+      return head :ok
+    end
+
     @image = Image.new(image_params)
 
     if @image.save
