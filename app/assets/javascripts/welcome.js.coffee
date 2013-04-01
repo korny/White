@@ -17,13 +17,17 @@ $ ->
     if --draglevel <= 0
       $('body').removeClass 'dragging'
 
-progress = (event) ->
-  if event.lengthComputable
-    complete = event.loaded / event.total * 100 | 0
-    $('#progress').val complete
-
 upload = (files, index = 0) ->
-  if file = files.item(index)
+  if file = files.item index
+    image = new Image
+    image.width = 100  # a fake resize
+    $('.images').append $(image).wrap('<div class="image" />').parent()
+    $progress = $ '<progress min=0 max=100 value=0>'
+    progress = (event) ->
+      if event.lengthComputable
+        $progress.val event.loaded / event.total * 100 | 0
+    $(image).after $progress
+    
     formData = new FormData
     formData.append 'file', file
     
@@ -39,6 +43,10 @@ upload = (files, index = 0) ->
       )
       .done (data, textStatus) ->
         upload files, index + 1
+        image.src = data.url
+        $(image).next('progress').remove()
+        $(image).on 'loaded', ->
+          $(@).removeAttr 'width'
       .fail ->
         console.log 'Something went terribly wrong...'
     
@@ -50,9 +58,6 @@ upload = (files, index = 0) ->
     if acceptedTypes[file.type]
       reader = new FileReader
       reader.onload = (event) ->
-        image = new Image
         image.src = event.target.result
-        image.width = 100  # a fake resize
-        document.body.appendChild image
       
       reader.readAsDataURL file

@@ -22,17 +22,18 @@ class ImagesController < ApplicationController
   # POST /images
   def create
     if params[:file]
-      Rails.logger.debug { params[:file] }
-      sleep 1
-      return head :ok
-    end
-
-    @image = Image.new(image_params)
-
-    if @image.save
-      redirect_to @image, notice: 'Image was successfully created.'
+      image = Image.create! :picture => params[:file]
+      render :json => {
+        :url => image.picture.url(:thumb)
+      }
     else
-      render action: 'new'
+      @image = Image.new(image_params)
+      
+      if @image.save
+        redirect_to @image, notice: 'Image was successfully created.'
+      else
+        render action: 'new'
+      end
     end
   end
 
