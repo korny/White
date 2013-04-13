@@ -23,15 +23,31 @@ class Image < ActiveRecord::Base
   
   before_validation :set_url_title_from_filename, if: :picture?
   
+  after_save -> { reload.reprocess_picture! }, if: :long_side_changed?
+  
   def size_for_thumbnail
     (long_side * (page.images_zoom_factor / 100.0)).round
   end
+  
+  def reprocess_picture!
+    picture.reprocess!
+  end
+  
+  protected
   
   def long_side
     width && height ? [height, width].max : 100
   end
   
-  protected
+  def long_side_was
+    width_was && height_was ? [height_was, width_was].max : 100
+  end
+  
+  def long_side_changed?
+    long_side != long_side_was
+  end
+  
+  # callbacks
   
   def set_url_title_from_filename
     File.basename(picture.original_filename, '.*').sub(/^\d+_/, '').tap do |name|

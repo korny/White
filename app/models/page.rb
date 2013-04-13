@@ -13,9 +13,15 @@ class Page < ActiveRecord::Base
   
   validates_url_title_unique scope: [:section_id]
   
+  after_save :reprocess_images!, if: :images_zoom_factor_changed?
+  
   protected
   
   def order_scope
     section.try(:pages)
+  end
+  
+  def reprocess_images!
+    images.each(&:reprocess_picture!)
   end
 end
