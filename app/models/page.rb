@@ -12,10 +12,6 @@ class Page < ActiveRecord::Base
   
   validates_url_title_unique scope: [:section_id]
   
-  def self.welcome_page
-    Section.first.pages.first
-  end
-  
   protected
   
   def order_scope

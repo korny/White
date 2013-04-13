@@ -8,6 +8,14 @@ class Section < ActiveRecord::Base
   
   validates_url_title_unique
   
+  def self.welcome_section
+    first
+  end
+  
+  def welcome_page
+    pages.first
+  end
+  
   protected
   
   def order_scope
