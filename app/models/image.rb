@@ -5,9 +5,9 @@ class Image < ActiveRecord::Base
   belongs_to :page, inverse_of: :images
   
   has_attached_file :picture, styles: -> (attachment) {
+    size = attachment.instance.size_for_thumbnail
     {
-      medium: "300x300>",
-      thumb:  "100x100>",
+      thumb: "#{size}x#{size}>",
     }
   }, :default_url => "/images/:style/missing.png"
   
@@ -22,6 +22,14 @@ class Image < ActiveRecord::Base
   validates_url_title_unique
   
   before_validation :set_url_title_from_filename, if: :picture?
+  
+  def size_for_thumbnail
+    (long_side * (page.images_zoom_factor / 100.0)).round
+  end
+  
+  def long_side
+    width && height ? [height, width].max : 100
+  end
   
   protected
   
