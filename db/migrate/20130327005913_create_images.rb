@@ -1,11 +1,13 @@
 class CreateImages < ActiveRecord::Migration
   def change
     create_table :images do |t|
-      t.string :title
-      t.string :caption
+      t.belongs_to :page, null: false, index: true
       
-      t.integer :height, :width
-      t.belongs_to :gallery, index: true
+      t.string  :title
+      t.string  :caption
+      t.integer :height
+      t.index   :width
+      t.integer :position
       
       t.timestamps
     end
