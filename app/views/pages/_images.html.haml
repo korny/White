@@ -1,7 +1,7 @@
 .images
   - for image in page.images.has_picture
     .image
-      = image_tag image.picture(:thumb)
+      = image_tag image.picture(:thumb), title: image.title
 
 :coffee
   $ -> dragAndDropFileUploadTo #{url_for([page.section, page, :images]).to_json}
