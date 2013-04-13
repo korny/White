@@ -10,7 +10,7 @@ window.dragAndDropFileUploadTo = (uploadPath) ->
       window.setTimeout -> upload files
       false
   
-  ->
+  $ ->
     draglevel = 0
     $('body')
     .on 'dragenter', ->
