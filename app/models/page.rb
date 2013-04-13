@@ -6,9 +6,10 @@ class Page < ActiveRecord::Base
   
   has_many :images, inverse_of: :page
   
-  validates :section_id, presence: true
-  validates :title,      length: { maximum: 100 }
-  validates :text,       length: { maximum: 10_000 }
+  validates :section_id,         presence: true
+  validates :title,              length: { maximum: 100 }
+  validates :text,               length: { maximum: 10_000 }
+  validates :images_zoom_factor, presence: true, numericality: true, inclusion: { in: 1..1000 }
   
   validates_url_title_unique scope: [:section_id]
   
