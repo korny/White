@@ -1,0 +1,9 @@
+- welcome_page = Page.welcome_page
+
+%ul.sidebar
+  - for section in sidebar_sections
+    %li.section
+      = section.title
+      %ul
+        - for page in section.pages
+          %li= link_to page.title, page == welcome_page ? root_path : page

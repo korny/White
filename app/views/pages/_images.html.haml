@@ -1,0 +1,7 @@
+.images
+  - for image in page.images.has_picture
+    .image
+      = image_tag image.picture(:thumb)
+
+:coffee
+  $ -> dragAndDropFileUploadTo #{page_images_path(page).to_json}

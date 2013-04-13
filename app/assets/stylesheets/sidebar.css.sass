@@ -1,0 +1,22 @@
+$sidebar-width: 210px
+$sidebar-top:    65px
+
+ul.sidebar
+  position: fixed
+  top: $sidebar-top
+  margin: 0
+  margin-left: 5px
+  width: $sidebar-width
+  overflow: hidden
+  background-color: white
+  
+  > li
+    margin-bottom: 12px
+  
+  &, & ul
+    list-style-type: none
+    padding-left: 0
+  
+  + .content
+    margin-left: $sidebar-width + 10px
+    margin-top:  $sidebar-top

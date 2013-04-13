@@ -1,65 +1,38 @@
 class ImagesController < ApplicationController
-  before_action :set_image, only: [:show, :edit, :update, :destroy]
-
-  # GET /images
-  def index
-    @images = Image.all
-  end
-
-  # GET /images/1
-  def show
-  end
-
-  # GET /images/new
-  def new
-    @image = Image.new
-  end
-
-  # GET /images/1/edit
-  def edit
-  end
-
-  # POST /images
+  before_action :set_page,  only: [:create]
+  before_action :set_image, only: [:update, :destroy]
+  
   def create
-    if params[:file]
-      image = Image.create! :picture => params[:file]
-      render :json => {
-        :url => image.picture.url(:thumb)
-      }
-    else
-      @image = Image.new(image_params)
-      
-      if @image.save
-        redirect_to @image, notice: 'Image was successfully created.'
-      else
-        render action: 'new'
-      end
-    end
+    image = @page.images.create!(picture: params[:file])
+    
+    render json: {
+      url: image.picture.url(:thumb)
+    }
   end
-
-  # PATCH/PUT /images/1
+  
   def update
-    if @image.update(image_params)
-      redirect_to @image, notice: 'Image was successfully updated.'
-    else
-      render action: 'edit'
-    end
+    @image.update! image_params
+    
+    render head: :ok
   end
-
-  # DELETE /images/1
+  
   def destroy
     @image.destroy
-    redirect_to images_url, notice: 'Image was successfully destroyed.'
+    
+    render head: :ok
   end
-
+  
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_image
-      @image = Image.find(params[:id])
-    end
-
-    # Only allow a trusted parameter "white list" through.
-    def image_params
-      params.require(:image).permit(:title, :caption, :height, :width)
-    end
+  
+  def set_page
+    @page = Page.find(params[:page_id])
+  end
+  
+  def set_image
+    @image = Image.find(params[:id])
+  end
+  
+  def image_params
+    params.require(:image).permit(:page_id, :title, :caption, :height, :width, :position)
+  end
 end

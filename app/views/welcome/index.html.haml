@@ -1,4 +1,0 @@
-.images
-  - for image in Image.where 'picture_file_name IS NOT NULL'
-    .image
-      = image_tag image.picture(:thumb)
