@@ -13,6 +13,6 @@ class PagesController < ApplicationController
   private
   
   def set_page
-    @page = Page.find(params[:id])
+    @page = Page.find_by!(url_title: params[:id])
   end
 end

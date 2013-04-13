@@ -12,8 +12,8 @@ module OrderByPosition
   protected
   
   def set_position
-    if scope = order_scope
-      self.position ||= (scope.maximum(:position) || 0) + 1
+    if siblings = order_scope
+      self.position ||= (siblings.maximum(:position) || 0) + 1
     end
   end
 end

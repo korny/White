@@ -4,4 +4,4 @@
       = image_tag image.picture(:thumb)
 
 :coffee
-  $ -> dragAndDropFileUploadTo #{page_images_path(page).to_json}
+  $ -> dragAndDropFileUploadTo #{url_for([page.section, page, :images]).to_json}

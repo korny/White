@@ -25,11 +25,11 @@ class ImagesController < ApplicationController
   private
   
   def set_page
-    @page = Page.find(params[:page_id])
+    @page = Page.find_by!(url_title: params[:page_id])
   end
   
   def set_image
-    @image = Image.find(params[:id])
+    @image = Image.find_by!(id: params[:id])
   end
   
   def image_params
