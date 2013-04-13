@@ -1,6 +1,6 @@
-.images
+.images{ data: { sort_update_url: reorder_section_page_images_path(page.section, page) } }
   - for image in page.images.has_picture
-    .image
+    .image{ data: { id: image.id } }
       = image_tag image.picture(:thumb), title: image.title
 
 :coffee

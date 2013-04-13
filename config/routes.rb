@@ -3,7 +3,11 @@
 White::Application.routes.draw do
   resources :sections, only: [], path: '' do
     resources :pages, only: [:show, :index], path: '' do
-      resources :images, only: [:create]
+      resources :images, only: [:create] do
+        collection do
+          patch :reorder
+        end
+      end
     end
   end
   

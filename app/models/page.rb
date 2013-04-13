@@ -15,6 +15,15 @@ class Page < ActiveRecord::Base
   
   after_save :reprocess_images!, if: :images_zoom_factor_changed?
   
+  def update_images_order image_ids
+    transaction do
+      image_ids.each_with_index do |id, index|
+        Image.where(:id => id).update_all ['position = ?', index + 1]
+      end
+      touch
+    end
+  end
+  
   protected
   
   def order_scope

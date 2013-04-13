@@ -1,6 +1,6 @@
 class ImagesController < ApplicationController
-  before_action :set_section, only: [:create]
-  before_action :set_page,    only: [:create]
+  before_action :set_section, only: [:create, :reorder]
+  before_action :set_page,    only: [:create, :reorder]
   before_action :set_image,   only: [:update, :destroy]
   
   def create
@@ -9,6 +9,15 @@ class ImagesController < ApplicationController
     render json: {
       url: image.picture.url(:thumb)
     }
+  end
+  
+  def reorder
+    ids = params[:ids].map(&:to_i).uniq
+    if ids.size == @page.images.size
+      @page.update_images_order ids
+    end
+    
+    head :ok
   end
   
   def update
