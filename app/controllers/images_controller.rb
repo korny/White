@@ -1,6 +1,7 @@
 class ImagesController < ApplicationController
-  before_action :set_page,  only: [:create]
-  before_action :set_image, only: [:update, :destroy]
+  before_action :set_section, only: [:create]
+  before_action :set_page,    only: [:create]
+  before_action :set_image,   only: [:update, :destroy]
   
   def create
     image = @page.images.create!(picture: params[:file])
@@ -24,8 +25,12 @@ class ImagesController < ApplicationController
   
   private
   
+  def set_section
+    @section = Section.find_by!(url_title: params[:section_id])
+  end
+  
   def set_page
-    @page = Page.find_by!(url_title: params[:page_id])
+    @page = @section.pages.find_by!(url_title: params[:page_id])
   end
   
   def set_image

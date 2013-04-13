@@ -1,8 +1,10 @@
 class PagesController < ApplicationController
-  before_action :set_page, :only => :show
+  before_action :set_section, :only => :show
+  before_action :set_page,    :only => :show
   
   def index
-    @page = Page.welcome_page
+    @section = Section.welcome_section
+    @page    = @section.welcome_page
     
     render :show
   end
@@ -12,7 +14,11 @@ class PagesController < ApplicationController
   
   private
   
+  def set_section
+    @section = Section.find_by!(url_title: params[:section_id])
+  end
+  
   def set_page
-    @page = Page.find_by!(url_title: params[:id])
+    @page = @section.pages.find_by!(url_title: params[:id])
   end
 end
