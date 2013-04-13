@@ -7,6 +7,7 @@ gem 'activerecord-deprecated_finders', github: 'rails/activerecord-deprecated_fi
 
 gem 'mysql2'
 gem 'paperclip', github: 'thoughtbot/paperclip'
+gem 'kramdown'
 
 # Gems used only for assets and not required
 # in production environments by default.
