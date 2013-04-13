@@ -23,13 +23,13 @@ class ImagesController < ApplicationController
   def update
     @image.update! image_params
     
-    render head: :ok
+    head :ok
   end
   
   def destroy
     @image.destroy
     
-    render head: :ok
+    head :ok
   end
   
   private
