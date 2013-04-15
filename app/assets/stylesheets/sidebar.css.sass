@@ -1,11 +1,12 @@
 $sidebar-width: 210px
-$sidebar-top:    65px
+$sidebar-top:    60px
 
 ul.sidebar
   position: fixed
+  z-index: 10
   top: $sidebar-top
   margin: 0
-  margin-left: 5px
+  padding: 5px
   width: $sidebar-width
   overflow: hidden
   background-color: white
@@ -15,6 +16,7 @@ ul.sidebar
   
   &, & ul
     list-style-type: none
+  & ul
     padding-left: 0
   
   + .content
