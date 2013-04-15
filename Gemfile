@@ -14,6 +14,7 @@ gem 'kramdown'
 group :assets do
   gem 'sprockets-rails', github: 'rails/sprockets-rails'
   gem 'sass-rails',      github: 'rails/sass-rails'
+  # gem 'compass-rails',   github: 'Compass/compass-rails', branch: 'rails4'
   gem 'coffee-rails',    github: 'rails/coffee-rails'
   gem 'haml-rails',      github: 'indirect/haml-rails'
 
