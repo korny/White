@@ -4,7 +4,9 @@ class ImagesController < ApplicationController
   before_action :set_image,   only: [:update, :destroy]
   
   def create
-    image = @page.images.create!(picture: params[:file])
+    image = @page.images.build
+    image.picture = params[:file]
+    image.save!
     
     render json: {
       url: image.picture.url(:thumb)
