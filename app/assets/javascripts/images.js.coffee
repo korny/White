@@ -1,13 +1,14 @@
 $ ->
   # display image
   $('.fancybox').fancybox
-    padding: 0
+    padding: 0,
     closeBtn: false,   # hide close button
     arrows: false,     # hide arrow buttons
     closeClick: true,  # close fancyBox when user clicks the content
     preload: 0,        # don't preload images
-    wrapCSS: 'border: 2px solid red',
-    helpers: { overlay: { css: { background: 'white' } } }
+    helpers: {
+      title: { type: 'inside' }
+    }
   
   # reorder images
   $('.images').sortable
