@@ -24,14 +24,11 @@ window.setupFileUpload = ->
   
   upload = (files, index = 0) ->
     if file = files.item index
-      image = new Image
-      image.width = 100  # a fake resize
-      $('.images').append $(image).wrap('<div class="image" />').parent()
       $progress = $ '<progress min=0 max=100 value=0>'
+      $('.images').append $progress
       progress = (event) ->
         if event.lengthComputable
           $progress.val event.loaded / event.total * 100 | 0
-      $(image).after $progress
       
       formData = new FormData
       formData.append 'file', file
@@ -49,21 +46,7 @@ window.setupFileUpload = ->
         )
         .done (data, textStatus) ->
           upload files, index + 1
-          image.src = data.url
-          $(image).next('progress').remove()
-          $(image).on 'loaded', ->
-            $(@).removeAttr 'width'
         .fail ->
           console.log 'Something went terribly wrong...'
-      
-      # preview
-      acceptedTypes =
-        'image/png': true
-        'image/jpeg': true
-        'image/gif': true
-      if acceptedTypes[file.type]
-        reader = new FileReader
-        reader.onload = (event) ->
-          image.src = event.target.result
-        
-        reader.readAsDataURL file
+        .always ->
+          $('progress').remove()

@@ -8,9 +8,7 @@ class ImagesController < ApplicationController
     image.picture = params[:file]
     image.save!
     
-    render json: {
-      url: image.picture.url(:thumb)
-    }
+    render js: 'Turbolinks.visit(location.pathname)'
   end
   
   def reorder
