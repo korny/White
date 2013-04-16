@@ -6,4 +6,7 @@
       = section.title
       %ul
         - for page in section.pages
-          %li= link_to page.title, page == welcome_page ? root_path : [section, page]
+          - if page == @page
+            %li.page= page.title
+          - else
+            %li.page= link_to page.title, page == welcome_page ? root_path : [section, page]
