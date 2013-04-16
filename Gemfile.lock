@@ -16,7 +16,7 @@ GIT
 
 GIT
   remote: git://github.com/rails/arel.git
-  revision: 933ea218116645eafaf3b7ea5695520db0f9d9ba
+  revision: 8c21663f655b9a67069c03094e5da2dc8a674eb3
   specs:
     arel (4.0.0.beta2.20130314230643)
 
@@ -110,6 +110,7 @@ GEM
   remote: https://rubygems.org/
   specs:
     atomic (1.1.7)
+    bcrypt-ruby (3.0.1)
     builder (3.1.4)
     climate_control (0.0.3)
       activesupport (>= 3.0)
@@ -119,13 +120,6 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.6.2)
-    columnize (0.3.6)
-    debugger (1.5.0)
-      columnize (>= 0.3.1)
-      debugger-linecache (~> 1.2.0)
-      debugger-ruby_core_source (~> 1.2.0)
-    debugger-linecache (1.2.0)
-    debugger-ruby_core_source (1.2.0)
     erubis (2.7.0)
     execjs (1.4.0)
       multi_json (~> 1.0)
@@ -133,6 +127,9 @@ GEM
       tilt
     hike (1.2.2)
     i18n (0.6.4)
+    jquery-turbolinks (1.0.0)
+      railties (>= 3.1.0)
+      turbolinks
     kgio (2.8.0)
     kramdown (1.0.1)
     mail (2.5.3)
@@ -162,6 +159,8 @@ GEM
     treetop (1.4.12)
       polyglot
       polyglot (>= 0.3.1)
+    turbolinks (1.1.0)
+      coffee-rails
     tzinfo (0.3.37)
     uglifier (2.0.1)
       execjs (>= 0.3.0)
@@ -177,15 +176,17 @@ PLATFORMS
 DEPENDENCIES
   activerecord-deprecated_finders!
   arel!
+  bcrypt-ruby (~> 3.0.0)
   coffee-rails!
-  debugger
   haml-rails!
   jquery-rails!
+  jquery-turbolinks
   kramdown
   mysql2
   paperclip!
   rails!
   sass-rails!
   sprockets-rails!
+  turbolinks
   uglifier (>= 1.0.3)
   unicorn
