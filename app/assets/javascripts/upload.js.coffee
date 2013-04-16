@@ -1,6 +1,4 @@
-window.dragAndDropFileUploadTo = (uploadPath) ->
-  console.log "Starting file uploader to #{uploadPath}…"
-  
+dragAndDropFileUpload = ->
   $(document)
     .on 'dragover',
       false  # required to make dragging work on Gecko
@@ -10,15 +8,14 @@ window.dragAndDropFileUploadTo = (uploadPath) ->
       window.setTimeout -> upload files
       false
   
-  $ ->
-    draglevel = 0
-    $('body')
-    .on 'dragenter', ->
-      if ++draglevel >= 1
-        $('body').addClass 'dragging'
-    .on 'dragleave', ->
-      if --draglevel <= 0
-        $('body').removeClass 'dragging'
+  # draglevel = 0
+  # $('body')
+  # .on 'dragenter', ->
+  #   if ++draglevel >= 1
+  #     $('body').addClass 'dragging'
+  # .on 'dragleave', ->
+  #   if --draglevel <= 0
+  #     $('body').removeClass 'dragging'
   
   upload = (files, index = 0) ->
     if file = files.item index
@@ -34,6 +31,7 @@ window.dragAndDropFileUploadTo = (uploadPath) ->
       formData = new FormData
       formData.append 'file', file
       
+      uploadPath = $('.images').data('upload-url')
       $.ajax(uploadPath,
         type: 'POST',
         data: formData,
@@ -64,3 +62,5 @@ window.dragAndDropFileUploadTo = (uploadPath) ->
           image.src = event.target.result
         
         reader.readAsDataURL file
+
+dragAndDropFileUpload()
