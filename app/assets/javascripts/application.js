@@ -11,9 +11,10 @@
 // GO AFTER THE REQUIRES BELOW.
 //
 //= require jquery
+//= require jquery.turbolinks
 //= require jquery-ui
 //= require jquery_ujs
 //= require jquery.fancybox
-// require turbolinks
+//= require turbolinks
 // 
 //= require_tree .
