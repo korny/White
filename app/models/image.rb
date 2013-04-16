@@ -21,7 +21,7 @@ class Image < ActiveRecord::Base
   
   validates_url_title_unique
   
-  before_validation :set_url_title_from_filename, if: :picture?
+  before_validation :set_url_title_from_filename, if: :picture?, on: :create
   
   after_save -> { reload.reprocess_picture! }, if: :long_side_changed?
   
@@ -51,7 +51,7 @@ class Image < ActiveRecord::Base
   
   def set_url_title_from_filename
     File.basename(picture.original_filename, '.*').sub(/^\d+_/, '').tap do |name|
-      self.url_title = name.parameterize
+      self.url_title ||= unique_url_title(name.parameterize)
     end
   end
   

@@ -18,6 +18,18 @@ module UrlTitle
   protected
   
   def set_url_title
-    self.url_title ||= title.to_s.parameterize if title?
+    self.url_title ||= unique_url_title(title.parameterize) if title?
+  end
+  
+  def unique_url_title title
+    title.dup.tap do |value|
+      # FIXME: uniqueness_scope for Page
+      scope   = new_record? ? self.class : self.class.where('id != ?', id)
+      counter = 0
+      
+      while scope.where(url_title: value).exists?
+        value.replace "#{title}-#{counter += 1}"
+      end
+    end
   end
 end
