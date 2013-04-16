@@ -11,3 +11,9 @@
       
       .content
         = yield
+    
+    = render 'layouts/login'
+    
+    - if current_user
+      :javascript
+        setupFileUpload();

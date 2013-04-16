@@ -1,0 +1,19 @@
+.login input, .logout
+  display: block
+  position: fixed
+  right: 0
+  top: 0
+  margin: 5px
+
+.login input
+  -webkit-transition: right 0.3s ease, border-color 0.3s ease, color 0.3s ease
+  transition: right 0.3s ease, border-color 0.3s ease, color 0.3s ease
+  right: -70px
+  width: 100px
+  border: none
+  border-bottom: 1px solid white
+  color: white
+  &:hover, &:focus
+    right: 0px
+    color: black
+    border-color: gray

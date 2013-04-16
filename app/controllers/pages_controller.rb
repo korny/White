@@ -1,4 +1,6 @@
 class PagesController < ApplicationController
+  skip_before_filter :login_required
+  
   before_action :set_section, :only => :show
   before_action :set_page,    :only => :show
   

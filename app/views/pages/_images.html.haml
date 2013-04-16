@@ -1,4 +1,4 @@
-.images{ data: { sort_update_url: reorder_section_page_images_path(page.section, page), upload_url: url_for([page.section, page, :images]) } }
+.images{ data: current_user && { sort_update_url: reorder_section_page_images_path(page.section, page), upload_url: url_for([page.section, page, :images]) } }
   - for image in page.images.has_picture.includes(:page)
     %a.image.fancybox{ data: { id: image.id, fancybox: { title: image_fancybox_title(image) } }, href: image.picture.url, rel: 'group' }>
       = image_tag image.picture(:thumb), title: image.title

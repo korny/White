@@ -1,4 +1,9 @@
-dragAndDropFileUpload = ->
+setup = false
+
+window.setupFileUpload = ->
+  return if setup
+  setup = true
+  
   $(document)
     .on 'dragover',
       false  # required to make dragging work on Gecko
@@ -62,5 +67,3 @@ dragAndDropFileUpload = ->
           image.src = event.target.result
         
         reader.readAsDataURL file
-
-dragAndDropFileUpload()
