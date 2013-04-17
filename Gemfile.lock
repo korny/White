@@ -10,13 +10,13 @@ GIT
 
 GIT
   remote: git://github.com/rails/activerecord-deprecated_finders.git
-  revision: 46aa99efc9c3c1db1d4f2e55373481212e6b2e26
+  revision: 05eacbd94b91adea69f5fc32475a96ebe0d2cf0e
   specs:
-    activerecord-deprecated_finders (0.0.3)
+    activerecord-deprecated_finders (1.0.0)
 
 GIT
   remote: git://github.com/rails/arel.git
-  revision: 8c21663f655b9a67069c03094e5da2dc8a674eb3
+  revision: 788ae0ec3b9d13bb1e1f45632199fa7bc200fc1f
   specs:
     arel (4.0.0.beta2.20130314230643)
 
@@ -83,7 +83,7 @@ PATH
       builder (~> 3.1.0)
     activerecord (4.0.0.beta1)
       activemodel (= 4.0.0.beta1)
-      activerecord-deprecated_finders (~> 0.0.3)
+      activerecord-deprecated_finders (~> 1.0.0)
       activesupport (= 4.0.0.beta1)
       arel (~> 4.0.0.beta2)
     activesupport (4.0.0.beta1)
@@ -109,7 +109,7 @@ PATH
 GEM
   remote: https://rubygems.org/
   specs:
-    atomic (1.1.7)
+    atomic (1.1.8)
     bcrypt-ruby (3.0.1)
     builder (3.1.4)
     climate_control (0.0.3)
@@ -159,7 +159,7 @@ GEM
     treetop (1.4.12)
       polyglot
       polyglot (>= 0.3.1)
-    turbolinks (1.1.0)
+    turbolinks (1.1.1)
       coffee-rails
     tzinfo (0.3.37)
     uglifier (2.0.1)
