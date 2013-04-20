@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', path: '/Users/murphy/ruby/rails'
+gem 'rails', github: 'rails/rails'
 
 # models
 gem 'arel',                            github: 'rails/arel'

@@ -10,21 +10,21 @@ GIT
 
 GIT
   remote: git://github.com/rails/activerecord-deprecated_finders.git
-  revision: 05eacbd94b91adea69f5fc32475a96ebe0d2cf0e
+  revision: 5ed930cfb6bbfa71284d3e81b3bde8dbf78d8093
   specs:
-    activerecord-deprecated_finders (1.0.0)
+    activerecord-deprecated_finders (1.0.1)
 
 GIT
   remote: git://github.com/rails/arel.git
-  revision: 788ae0ec3b9d13bb1e1f45632199fa7bc200fc1f
+  revision: 3ef63ac5366000b232ca5fe0848de9db9a3c1f9a
   specs:
-    arel (4.0.0.beta2.20130314230643)
+    arel (4.0.0.20130418133826)
 
 GIT
   remote: git://github.com/rails/coffee-rails.git
-  revision: 948fef30464235e7588e34faa513b448a00c0e6b
+  revision: 78d4d7ac5baf4e76a6717f303f51b505c40b9770
   specs:
-    coffee-rails (4.0.0.beta1)
+    coffee-rails (4.0.0)
       coffee-script (>= 2.2.0)
       railties (>= 4.0.0.beta, < 5.0)
 
@@ -37,37 +37,8 @@ GIT
       thor (>= 0.14, < 2.0)
 
 GIT
-  remote: git://github.com/rails/sass-rails.git
-  revision: d435679b0fe528b954a9abd0059f975d94707574
-  specs:
-    sass-rails (4.0.0.beta1)
-      railties (>= 4.0.0.beta, < 5.0)
-      sass (>= 3.1.10)
-      sprockets-rails (~> 2.0.0.rc0)
-      tilt (~> 1.3)
-
-GIT
-  remote: git://github.com/rails/sprockets-rails.git
-  revision: 16082178a15ce50270ec2250ad202379fa882079
-  specs:
-    sprockets-rails (2.0.0.rc3)
-      actionpack (>= 3.0)
-      activesupport (>= 3.0)
-      sprockets (~> 2.8)
-
-GIT
-  remote: git://github.com/thoughtbot/paperclip.git
-  revision: 7d807c6af3e89c56e2e846352074f2eac1620115
-  specs:
-    paperclip (3.4.1)
-      activemodel (>= 3.0.0)
-      activerecord (>= 3.0.0)
-      activesupport (>= 3.0.0)
-      cocaine (~> 0.5.0)
-      mime-types
-
-PATH
-  remote: /Users/murphy/ruby/rails
+  remote: git://github.com/rails/rails.git
+  revision: 0400a7ff574f83f2f5d5c3f7d7569bfb37963dda
   specs:
     actionmailer (4.0.0.beta1)
       actionpack (= 4.0.0.beta1)
@@ -83,9 +54,9 @@ PATH
       builder (~> 3.1.0)
     activerecord (4.0.0.beta1)
       activemodel (= 4.0.0.beta1)
-      activerecord-deprecated_finders (~> 1.0.0)
+      activerecord-deprecated_finders (~> 1.0.1)
       activesupport (= 4.0.0.beta1)
-      arel (~> 4.0.0.beta2)
+      arel (~> 4.0.0)
     activesupport (4.0.0.beta1)
       i18n (~> 0.6, >= 0.6.4)
       minitest (~> 4.2)
@@ -99,12 +70,41 @@ PATH
       activesupport (= 4.0.0.beta1)
       bundler (>= 1.3.0, < 2.0)
       railties (= 4.0.0.beta1)
-      sprockets-rails (~> 2.0.0.rc3)
+      sprockets-rails (~> 2.0.0.rc4)
     railties (4.0.0.beta1)
       actionpack (= 4.0.0.beta1)
       activesupport (= 4.0.0.beta1)
       rake (>= 0.8.7)
       thor (>= 0.18.1, < 2.0)
+
+GIT
+  remote: git://github.com/rails/sass-rails.git
+  revision: 2d812b5f87929d62dde1748ebf531eea0cd77959
+  specs:
+    sass-rails (4.0.0.rc1)
+      railties (>= 4.0.0.beta, < 5.0)
+      sass (>= 3.1.10)
+      sprockets-rails (~> 2.0.0.rc4)
+
+GIT
+  remote: git://github.com/rails/sprockets-rails.git
+  revision: bbf755e8b3aaea4105d05a01d2e115ef30ccc6c7
+  specs:
+    sprockets-rails (2.0.0.rc4)
+      actionpack (>= 3.0)
+      activesupport (>= 3.0)
+      sprockets (~> 2.8)
+
+GIT
+  remote: git://github.com/thoughtbot/paperclip.git
+  revision: 7d807c6af3e89c56e2e846352074f2eac1620115
+  specs:
+    paperclip (3.4.1)
+      activemodel (>= 3.0.0)
+      activerecord (>= 3.0.0)
+      activesupport (>= 3.0.0)
+      cocaine (~> 0.5.0)
+      mime-types
 
 GEM
   remote: https://rubygems.org/
@@ -144,7 +144,7 @@ GEM
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
     mime-types (1.22)
-    minitest (4.7.1)
+    minitest (4.7.2)
     multi_json (1.7.2)
     mysql2 (0.3.11)
     net-scp (1.1.0)
