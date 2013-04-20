@@ -7,10 +7,9 @@ set :scm, :git
 set :repository, "git@github.com:korny/White.git"
 set :branch, "master"
 set :deploy_via, :remote_cache
+set :use_sudo, false
 
-role :web, "rubychan.de"                          # Your HTTP server, Apache/etc
-role :app, "rubychan.de"                          # This may be the same as your `Web` server
-role :db,  "rubychan.de", :primary => true        # This is where Rails migrations will run
+server "rubychan.de", :app, :web, :db, :primary => true
 
 set :ssh_options, { :forward_agent => true }
 
@@ -27,7 +26,7 @@ namespace :deploy do
   task :start do ; end
   task :stop do ; end
   task :restart, :roles => :app, :except => { :no_release => true } do
-    run "#{try_sudo} touch #{File.join(current_path,'tmp','restart.txt')}"
+    run "touch #{File.join(current_path,'tmp','restart.txt')}"
   end
 end
 
