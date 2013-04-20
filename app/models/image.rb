@@ -4,7 +4,7 @@ class Image < ActiveRecord::Base
   
   belongs_to :page, inverse_of: :images
   
-  has_attached_file :picture, styles: -> (attachment) {
+  has_attached_file :picture, styles: ->(attachment) {
     size = attachment.instance.size_for_thumbnail
     {
       thumb: "#{size}x#{size}>",
