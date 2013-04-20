@@ -2,8 +2,8 @@
 
 Capistrano::Configuration.instance.load do
   config_files = {
-    'database.yml'    => 'config/database.yml'
-    'secret_token.rb' => 'config/initializers/secret_token.rb'
+    'database.yml'    => 'config/database.yml',
+    'secret_token.rb' => 'config/initializers/secret_token.rb',
   }
   
   namespace :config do
