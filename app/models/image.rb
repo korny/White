@@ -52,6 +52,7 @@ class Image < ActiveRecord::Base
   def set_url_title_from_filename
     File.basename(picture.original_filename, '.*').sub(/^\d+_/, '').tap do |name|
       self.url_title ||= unique_url_title(name.parameterize)
+      self.title     ||= name.titleize
     end
   end
   
