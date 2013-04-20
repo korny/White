@@ -9,6 +9,18 @@ GIT
       railties (>= 3.1, < 4.1)
 
 GIT
+  remote: git://github.com/jimryan/capistrano.git
+  revision: 37e0ef3349a73e004d5c09c76e4b210cc2f08800
+  branch: support-json-manifest
+  specs:
+    capistrano (2.14.2)
+      highline
+      net-scp (>= 1.0.0)
+      net-sftp (>= 2.0.0)
+      net-ssh (>= 2.0.14)
+      net-ssh-gateway (>= 1.1.0)
+
+GIT
   remote: git://github.com/rails/activerecord-deprecated_finders.git
   revision: 5ed930cfb6bbfa71284d3e81b3bde8dbf78d8093
   specs:
@@ -112,12 +124,6 @@ GEM
     atomic (1.1.8)
     bcrypt-ruby (3.0.1)
     builder (3.1.4)
-    capistrano (2.14.2)
-      highline
-      net-scp (>= 1.0.0)
-      net-sftp (>= 2.0.0)
-      net-ssh (>= 2.0.14)
-      net-ssh-gateway (>= 1.1.0)
     climate_control (0.0.3)
       activesupport (>= 3.0)
     cocaine (0.5.1)
@@ -191,7 +197,7 @@ DEPENDENCIES
   activerecord-deprecated_finders!
   arel!
   bcrypt-ruby (~> 3.0.0)
-  capistrano
+  capistrano!
   coffee-rails!
   haml-rails!
   jquery-rails!

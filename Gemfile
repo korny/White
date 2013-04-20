@@ -38,8 +38,10 @@ gem 'bcrypt-ruby', '~> 3.0.0', require: false
 # Use unicorn as the app server
 gem 'unicorn'
 
-# Deploy with Capistrano
-gem 'capistrano', group: :development
+group :development do
+  # Deploy with Capistrano
+  gem 'capistrano', github: "jimryan/capistrano", :branch => "support-json-manifest"
+end
 
 # To use debugger
 # gem 'debugger', group: [:development, :test]
