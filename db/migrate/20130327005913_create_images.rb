@@ -6,7 +6,7 @@ class CreateImages < ActiveRecord::Migration
       t.string  :title
       t.string  :caption
       t.integer :height
-      t.index   :width
+      t.integer :width
       t.integer :position
       
       t.timestamps
