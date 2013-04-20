@@ -8,7 +8,7 @@ class ImagesController < ApplicationController
     image.picture = params[:file]
     image.save!
     
-    render js: 'Turbolinks.visit(location.pathname)'
+    reload_page
   end
   
   def reorder
@@ -29,7 +29,7 @@ class ImagesController < ApplicationController
   def destroy
     @image.destroy
     
-    head :ok
+    reload_page
   end
   
   private
@@ -43,7 +43,7 @@ class ImagesController < ApplicationController
   end
   
   def set_image
-    @image = Image.find_by!(id: params[:id])
+    @image = Image.find_by!(url_title: params[:id])
   end
   
   def image_params

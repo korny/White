@@ -15,4 +15,8 @@ class ApplicationController < ActionController::Base
   def login_required
     redirect_to root_url unless current_user
   end
+  
+  def reload_page
+    render js: 'Turbolinks.visit(location.pathname)'
+  end
 end

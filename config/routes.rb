@@ -5,7 +5,7 @@ White::Application.routes.draw do
   
   resources :sections, only: [], path: '' do
     resources :pages, only: [:show, :index], path: '' do
-      resources :images, only: [:create] do
+      resources :images, only: [:create, :destroy] do
         collection do
           patch :reorder
         end
