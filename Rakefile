@@ -3,8 +3,6 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-White::Application.load_tasks
-
 class Rake::Application
   def standard_exception_handling
     begin
@@ -22,3 +20,5 @@ class Rake::Application
     end
   end
 end
+
+White::Application.load_tasks
