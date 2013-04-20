@@ -5,9 +5,11 @@
   top: 0
   margin: 5px
 
+$login-transition: width 0.4s ease, border-color 0.4s ease, color 0.4s ease
+
 .login input
-  -webkit-transition: width 0.4s ease, border-color 0.4s ease, color 0.4s ease
-  transition: width 0.4s ease, border-color 0.4s ease, color 0.4s ease
+  -webkit-transition: $login-transition
+  transition: $login-transition
   overflow: hidden
   width: 30px
   border: none
