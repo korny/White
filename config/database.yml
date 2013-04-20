@@ -1,0 +1,17 @@
+login: &login
+  adapter: mysql2
+  encoding: utf8
+  reconnect: false
+  pool: 5
+  host: localhost
+  username: rails
+
+development: &development
+  database: white_development
+  <<: *login
+
+production: *development
+
+test:
+  database: white_test
+  <<: *login

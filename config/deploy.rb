@@ -1,5 +1,5 @@
 require 'bundler/capistrano'
-require './lib/capistrano_database'
+require './lib/capistrano_config'
 
 set :application, "White"
 

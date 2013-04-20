@@ -1,8 +1,7 @@
 *~
 .*
 /.bundle
-/config/database.yml
-/config/deploy/database.yml
+/config/deploy
 /log/*.log
 /tmp
 /db/schema.rb
