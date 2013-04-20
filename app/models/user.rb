@@ -5,6 +5,10 @@ class User < ActiveRecord::Base
   validates :email,    presence: true, uniqueness: true
   
   def self.authenticate_admin password
-    find_by(email: 'admin').try(:authenticate, password)
+    admin.try(:authenticate, password)
+  end
+  
+  def self.admin
+    find_by email: 'admin'
   end
 end

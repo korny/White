@@ -9,13 +9,6 @@ class CreateUsers < ActiveRecord::Migration
         
         t.timestamps
       end
-      
-      unless reverting?
-        $stdout.print 'Please set an admin password: '
-        if (password = $stdin.gets.chomp) && password.present?
-          User.create! email: 'admin', password: password
-        end
-      end
     end
   end
 end
