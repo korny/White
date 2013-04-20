@@ -1,5 +1,5 @@
 - if current_user
-  = link_to 'Logout', session_path, remote: true, method: :delete, class: 'logout'
+  = link_to 'log out', session_path, remote: true, method: :delete, class: 'logout'
 - else
   = form_tag session_path, class: 'login', remote: true do
     = password_field_tag 'password'
