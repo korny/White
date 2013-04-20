@@ -1,0 +1,32 @@
+@media screen and (max-width: 580px)
+  ul.sidebar
+    position: static
+    width: auto
+    top: 0
+    padding: 10px
+    + .content
+      margin: 0
+    & ul li
+      display: inline
+      margin-right: 10px
+  .content
+    p, h1, h2
+      width: auto
+      padding:
+        left: 10px
+        right: 10px
+  .images
+    text-align: center
+  .image
+    margin:
+      left: 4px
+      right: 4px
+      bottom: 5px
+  body
+    margin: 0
+    padding: 0
+  .body
+    max-width: auto
+    margin: 0
+  .login input, .logout
+    display: none
