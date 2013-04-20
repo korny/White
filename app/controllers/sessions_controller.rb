@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
     if user = authenticate_admin
       session[:user_id] = user.id
       
-      render js: 'location.reload()'
+      reload_page
     else
       head :unauthorized
     end
@@ -17,12 +17,16 @@ class SessionsController < ApplicationController
   def destroy
     reset_session
     
-    render js: 'location.reload()'
+    reload_page
   end
   
   protected
   
   def authenticate_admin
     User.authenticate_admin(params[:password])
+  end
+  
+  def reload
+    render js: 'location.reload()'
   end
 end
