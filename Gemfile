@@ -40,7 +40,7 @@ gem 'unicorn'
 
 group :development do
   # Deploy with Capistrano
-  gem 'capistrano', github: "jimryan/capistrano", :branch => "support-json-manifest"
+  gem 'capistrano'
 end
 
 # To use debugger
