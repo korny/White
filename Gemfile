@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', github: 'rails/rails'
+gem 'rails', github: 'rails/rails', branch: '4-0-stable'
 
 # models
 gem 'arel',                            github: 'rails/arel'
