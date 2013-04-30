@@ -24,7 +24,9 @@ class ImagesController < ApplicationController
     if @image.update image_params
       reload_page
     else
-      render js: "$('#{@image.errors.keys.map { |field| "input[name=\"image[#{field}]\"]" }.join ' '}', '.fancybox-title').addClass('error')"
+      error_fields = @image.errors.keys.map { |field| "input[name=\"image[#{field}]\"]" }
+      
+      render js: "$('#{error_fields.join ' '}', '.fancybox-title').addClass('error')"
     end
   end
   
