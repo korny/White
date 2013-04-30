@@ -20,7 +20,7 @@ $.rails.handlePrompt = (element) ->
 
 allowAction = $.rails.allowAction
 $.rails.allowAction = (element) ->
-  if element.data('confirm')
-    allowAction element
-  else if element.data('prompt')
+  if element.data 'prompt'
     $.rails.handlePrompt element
+  else
+    allowAction element
