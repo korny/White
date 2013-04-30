@@ -21,9 +21,11 @@ class ImagesController < ApplicationController
   end
   
   def update
-    @image.update! image_params
-    
-    head :ok
+    if @image.update image_params
+      reload_page
+    else
+      render js: "$('#{@image.errors.keys.map { |field| "input[name=\"image[#{field}]\"]" }.join ' '}', '.fancybox-title').addClass('error')"
+    end
   end
   
   def destroy

@@ -1,0 +1,9 @@
+= form_for [page.section, page, image], remote: true, html: { id: nil } do |form|
+  = form.text_field :title,   size: 30, id: nil, placeholder: 'Title'
+  %br
+  = form.text_field :height,  size:  3, id: nil, placeholder: 'Height'
+  x
+  = form.text_field :width,   size:  3, id: nil, placeholder: 'Width'
+  cm
+  %br
+  = form.text_field :caption, size: 40, id: nil, placeholder: 'Caption'

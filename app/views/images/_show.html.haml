@@ -1,0 +1,9 @@
+= image_tag image.picture(:thumb), title: image.title, alt: nil
+
+.title{ style: 'display: none' }
+  - if current_user
+    = render 'images/form', image: image, page: page
+  - else
+    = image.title
+    %br
+    = "#{image.height} x #{image.width} cm — #{image.caption}"

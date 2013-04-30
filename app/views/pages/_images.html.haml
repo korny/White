@@ -3,5 +3,6 @@
     .image>
       - if current_user
         = link_to raw('&times;'), [page.section, page, image], remote: true, method: :delete, class: 'delete', data: { confirm: "Remove picture \"#{image.title}\"?" }
-      %a.fancybox{ data: { id: image.id, fancybox: { title: image_fancybox_title(image) } }, href: image.picture.url, rel: 'group' }
-        = image_tag image.picture(:thumb), title: image.title, alt: nil
+      
+      %a.fancybox{ data: { id: image.id }, href: image.picture.url, rel: 'group' }
+        = render 'images/show', image: image, page: page
