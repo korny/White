@@ -5,6 +5,10 @@
       %ul
         - for page in section.pages
           - if page == @page
-            %li.page= page.title
+            %li.page
+              - if current_user
+                = link_to page.title, [section, page], method: :patch, remote: true, data: { prompt: { message: 'Enter a new zoom factor:', default: page.images_zoom_factor, param: 'images_zoom_factor' } }
+              - else
+                = page.title
           - else
             %li.page= link_to page.title, page == welcome_page ? root_path : [section, page]
