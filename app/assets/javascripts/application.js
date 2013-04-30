@@ -15,6 +15,7 @@
 //= require jquery-ui
 //= require jquery_ujs
 //= require jquery.fancybox
+//= require jquery_ujs.prompt
 //= require turbolinks
 // 
 //= require_tree .
