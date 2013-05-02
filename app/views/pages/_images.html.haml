@@ -1,8 +1,8 @@
 .images{ data: current_user && { sort_update_url: reorder_section_page_images_path(page.section, page), upload_url: url_for([page.section, page, :images]) } }
   - for image in page.images.has_picture.includes(:page)
-    .image>
+    .image{ data: { id: image.id } }>
       - if current_user
         = link_to raw('&times;'), [page.section, page, image], remote: true, method: :delete, class: 'delete', data: { confirm: "Remove picture \"#{image.title}\"?" }
       
-      %a.fancybox{ data: { id: image.id }, href: image.picture.url, rel: 'group' }
+      %a.fancybox{ href: image.picture.url, rel: 'group' }
         = render 'images/show', image: image, page: page
