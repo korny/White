@@ -1,4 +1,12 @@
-- if @page.text.present?
+- if current_user
+  - if @page.text.present?
+    .edit-page-text= markdown @page.text
+  - else
+    .edit-page-text.placeholder
+      %p [click to add text]
+  = render 'form', page: @page
+
+- elsif @page.text.present?
   = markdown @page.text
 
 = render 'images', page: @page

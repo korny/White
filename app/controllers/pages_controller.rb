@@ -15,8 +15,7 @@ class PagesController < ApplicationController
   end
   
   def update
-    @page.images_zoom_factor = params[:images_zoom_factor]
-    @page.save!
+    @page.update_attributes! page_params
     
     reload_page
   end
@@ -29,5 +28,11 @@ class PagesController < ApplicationController
   
   def set_page
     @page = @section.pages.find_by!(url_title: params[:id])
+  end
+  
+  def page_params
+    params.require(:page).permit(:images_zoom_factor, :text).tap do |page_params|
+      page_params[:text].encode! universal_newline: true if page_params[:text]
+    end
   end
 end

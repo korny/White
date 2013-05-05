@@ -7,7 +7,7 @@
           - if page == @page
             %li.page
               - if current_user
-                = link_to page.title, [section, page], method: :patch, remote: true, data: { prompt: { message: 'Enter a new zoom factor:', default: page.images_zoom_factor, param: 'images_zoom_factor' } }
+                = link_to page.title, [section, page], method: :patch, remote: true, data: { prompt: { message: 'Enter a new zoom factor:', default: page.images_zoom_factor, param: 'page[images_zoom_factor]' } }
               - else
                 = page.title
           - else

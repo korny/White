@@ -1,8 +1,11 @@
+$page-text-width: 600px
+
 .content
+  position: relative
   p
     margin-bottom: 9px
     margin-top: 0
-    width: 600px
+    width: $page-text-width
   
   h1
     font-size: 20px
@@ -13,3 +16,22 @@
     font-size: 18px
     font-weight: normal
     margin: 0
+  
+  .edit-page-text
+    cursor: pointer
+    &.placeholder
+      position: absolute
+      top: -24px
+      color: transparent
+      &:hover
+        color: black
+  
+  form.edit_page
+    margin-bottom: 20px
+    width: $page-text-width
+    textarea
+      width: 100%
+      font: inherit
+    input[type=submit]
+      display: block
+      margin: auto
