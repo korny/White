@@ -5,8 +5,8 @@
 - each page has a text and/or pictures
 - click on a picture to see just it on a white page
 - pretty URLs
-- no admin interface, just log in with password and change stuff around
-- upload pictures by dragging files in the browser
+- no admin interface, just log in with password and change stuff
+- upload new pictures by dragging files into the browser
 - thumbnails show relative sizes of the pictures
 - text formatting with Markdown
 - responsive layout for small screens
