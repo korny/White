@@ -10,6 +10,7 @@
 - thumbnails show relative sizes of the pictures
 - text formatting with Markdown
 - responsive layout for small screens
+- less than 500 lines of code
 
 ## Example
 
