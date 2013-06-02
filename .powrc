@@ -1,0 +1,11 @@
+if [ -f "$rvm_path/scripts/rvm" ]; then
+  # source "tools/ruby_production_gc_settings.sh"
+  source "$rvm_path/scripts/rvm"
+  
+  export RAILS_ENV=development
+  if [ -f ".ruby-gemset" ]; then
+    rvm use $(cat .ruby-version)@$(cat .ruby-gemset)
+  else
+    rvm use $(cat .ruby-version)
+  fi
+fi
