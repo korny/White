@@ -41,6 +41,7 @@ gem 'unicorn'
 group :development do
   # Deploy with Capistrano
   gem 'capistrano'
+  gem 'quiet_assets'
 end
 
 # To use debugger
