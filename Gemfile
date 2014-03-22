@@ -44,5 +44,8 @@ group :development do
   gem 'quiet_assets'
 end
 
+# JS runtime that works on debian
+gem 'therubyracer'
+
 # To use debugger
 # gem 'debugger', group: [:development, :test]
