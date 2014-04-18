@@ -1,36 +1,63 @@
-require 'bundler/capistrano'
-require './lib/capistrano_config'
+# config valid only for Capistrano 3.1
+lock '3.2.0'
 
-set :application, "White"
-set :bundle_without, [:development, :test]
+set :application, 'White'
+set :repo_url, 'git@github.com:korny/White.git'
 
-set :scm, :git
-set :repository, "git@github.com:korny/White.git"
-set :branch, "master"
-set :deploy_via, :remote_cache
-set :use_sudo, false
+# Default branch is :master
+ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }
 
-# server "rubychan.de", :app, :web, :db, :primary => true
-server "try-net.de", :app, :web, :db, :primary => true
+# Default deploy_to directory is /var/www/my_app
+# set :deploy_to, '/var/www/my_app'
 
-set :ssh_options, { :forward_agent => true }
+# Default value for :scm is :git
+# set :scm, :git
 
-# if you want to clean up old releases on each deploy uncomment this:
-# after "deploy:restart", "deploy:cleanup"
+# Default value for :format is :pretty
+# set :format, :pretty
 
-# If you aren't deploying to /u/apps/#{application} on the target
-# servers (which is the default), you can specify the actual location
-# via the :deploy_to variable:
-# set :deploy_to, "/var/apps/#{application}"
-set :deploy_to, "/var/www/Kunden/Julia-Schramm/#{application}"
+# Default value for :log_level is :debug
+# set :log_level, :debug
 
-# If you are using Passenger mod_rails uncomment this:
+# Default value for :pty is false
+# set :pty, true
+
+# Default value for :linked_files is []
+set :linked_files, %w{config/database.yml config/initializers/secret_token.rb}
+
+# Default value for linked_dirs is []
+set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
+
+# Default value for default_env is {}
+# set :default_env, { path: "/opt/ruby/bin:$PATH" }
+
+# Default value for keep_releases is 5
+# set :keep_releases, 5
+
+# use forward agent
+# set :ssh_options, forward_agent: true
+
 namespace :deploy do
-  task :start do ; end
-  task :stop do ; end
-  task :restart, :roles => :app, :except => { :no_release => true } do
-    run "touch #{File.join(current_path,'tmp','restart.txt')}"
-  end
-end
 
-default_run_options[:pty] = true
+  desc 'Restart application'
+  task :restart do
+    on roles(:app), in: :sequence, wait: 1 do
+      # Your restart mechanism here, for example:
+      execute :touch, release_path.join('tmp/restart.txt')
+    end
+  end
+
+  after :publishing, :restart
+
+  after :restart, :clear_cache do
+    # on roles(:web), in: :groups, limit: 3, wait: 10 do
+    #   # Here we can do anything such as:
+    #   # within release_path do
+    #   #   execute :rake, 'cache:clear'
+    #   # end
+    # end
+  end
+
+  after :finishing, "deploy:cleanup"
+
+end
