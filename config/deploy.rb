@@ -5,7 +5,7 @@ set :application, 'White'
 set :repo_url, 'git@github.com:korny/White.git'
 
 # Default branch is :master
-ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }
+# ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }
 
 # Default deploy_to directory is /var/www/my_app
 # set :deploy_to, '/var/www/my_app'
@@ -17,7 +17,7 @@ ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }
 # set :format, :pretty
 
 # Default value for :log_level is :debug
-# set :log_level, :debug
+set :log_level, :info
 
 # Default value for :pty is false
 # set :pty, true
