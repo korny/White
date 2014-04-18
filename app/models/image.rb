@@ -19,6 +19,8 @@ class Image < ActiveRecord::Base
   validates :height, :width, numericality: { allow_nil: true }
   validates :picture,        :attachment_presence => true
   
+  validates_attachment :picture, content_type: { content_type: ["image/jpg", "image/jpeg", "image/png"] }
+  
   validates_url_title_unique
   
   before_validation :set_url_title_from_filename, if: :picture?, on: :create
