@@ -8,7 +8,7 @@ set :repo_url, 'git@github.com:korny/White.git'
 ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }
 
 # Default deploy_to directory is /var/www/my_app
-set :deploy_to, '/var/www/Kunden/Julia-Schramm/White-cap3'
+# set :deploy_to, '/var/www/my_app'
 
 # Default value for :scm is :git
 # set :scm, :git
@@ -33,9 +33,6 @@ set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public
 
 # Default value for keep_releases is 5
 # set :keep_releases, 5
-
-# The production server
-server "try-net.de", roles: %w(app web db), :primary => true
 
 # use forward agent
 # set :ssh_options, forward_agent: true
