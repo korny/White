@@ -1,24 +1,23 @@
 source 'https://rubygems.org'
 
-gem 'rails', github: 'rails/rails', branch: '4-0-stable'
+gem 'rails', '4.0.4'
 
 # models
-gem 'arel',                            github: 'rails/arel'
 gem 'activerecord-deprecated_finders', github: 'rails/activerecord-deprecated_finders'
 gem 'mysql2'
-gem 'paperclip', github: 'thoughtbot/paperclip'
+gem 'paperclip'
 
 # views
 gem 'kramdown'
-gem 'haml-rails', github: 'indirect/haml-rails'
+gem 'haml-rails'
 
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
-  gem 'sprockets-rails', github: 'rails/sprockets-rails'
-  gem 'sass-rails',      github: 'rails/sass-rails'
+  gem 'sprockets-rails'
+  gem 'sass-rails'
   # gem 'compass-rails',   github: 'Compass/compass-rails', branch: 'rails4'
-  gem 'coffee-rails',    github: 'rails/coffee-rails'
+  gem 'coffee-rails'
   
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   # gem 'therubyracer', platforms: :ruby
@@ -26,7 +25,8 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
-gem 'jquery-rails', github: 'rails/jquery-rails'
+gem 'jquery-rails'
+gem 'jquery-ui-rails'
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
