@@ -50,7 +50,7 @@ gem 'haml'
 gem 'kramdown'
 
 # Use Capistrano for deployment
-gem 'capistrano', '~> 2.15', group: :development
+gem 'capistrano-rails', group: :development
 
 # Silence asset logging
 gem 'quiet_assets', group: :development
