@@ -1,1 +1,1 @@
-Turbolinks.visit("<%= j root_url %>");
+Turbolinks.visit("<%= j @section.pages.empty? ? root_url : url_for([@section, @section.pages.first]) %>");
