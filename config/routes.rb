@@ -1,4 +1,4 @@
-White::Application.routes.draw do
+Rails.application.routes.draw do
   resource :session, only: [:create, :destroy]
   
   resources :sections, only: [], path: '' do

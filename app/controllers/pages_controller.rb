@@ -15,7 +15,7 @@ class PagesController < ApplicationController
   end
   
   def update
-    @page.update_attributes! page_params
+    @page.update! page_params
     
     reload_page
   end
