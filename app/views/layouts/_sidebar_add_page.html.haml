@@ -1,0 +1,4 @@
+- page = section.pages.build
+
+%li.add-page
+  = link_to '+', [section, page], class: 'admin', title: 'add page', remote: true, method: :post, data: { prompt: { message: 'Enter a page title:', default: page.title, param: 'page[title]' } }

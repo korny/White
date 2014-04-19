@@ -12,12 +12,30 @@ ul.sidebar
   background-color: white
   
   > li
-    margin-bottom: 12px
+    padding-bottom: 12px
   
   &, & ul
     list-style-type: none
   & ul
     padding-left: 0
+  
+  .admin
+    display: none
+  li.page:hover > .admin
+    display: inline
+  li.section:hover li.add-page .admin
+    display: block
+  
+  .admin
+    color: gray
+    &:hover
+      color: black
+  
+  .section-title
+    color: gray
+  
+  .current
+    color: black
   
   + .content
     margin-left: $sidebar-width + 10px

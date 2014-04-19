@@ -13,6 +13,8 @@ class Page < ActiveRecord::Base
   
   validates_url_title_unique scope: [:section_id]
   
+  after_initialize :set_title
+  
   after_save :reprocess_images!, if: :images_zoom_factor_changed?
   
   def update_images_order image_ids
@@ -24,7 +26,15 @@ class Page < ActiveRecord::Base
     end
   end
   
+  def can_be_deleted?
+    images.empty? && text.blank?
+  end
+  
   protected
+  
+  def set_title
+    self.title ||= Date.today.year.to_s
+  end
   
   def order_scope
     section.try(:pages)

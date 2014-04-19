@@ -1,14 +1,10 @@
 %ul.sidebar
   - for section in sidebar_sections
     %li.section
-      = section.title
+      - if section.title.present?
+        %span.section-title= section.title
       %ul
         - for page in section.pages
-          - if page == @page
-            %li.page
-              - if current_user
-                = link_to page.title, [section, page], method: :patch, remote: true, data: { prompt: { message: 'Enter a new zoom factor:', default: page.images_zoom_factor, param: 'page[images_zoom_factor]' } }
-              - else
-                = page.title
-          - else
-            %li.page= link_to page.title, page == welcome_page ? root_path : [section, page]
+          = render 'layouts/sidebar_page',     section: section, page: page
+        - if current_user
+          = render 'layouts/sidebar_add_page', section: section
