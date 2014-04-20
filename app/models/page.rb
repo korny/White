@@ -17,7 +17,7 @@ class Page < ActiveRecord::Base
   
   before_create :set_top_position
   
-  after_save :reprocess_images!, if: :images_zoom_factor_changed?
+  after_commit :reprocess_images!, if: -> { previous_changes.key? :images_zoom_factor }
   
   def can_be_deleted?
     images.empty? && text.blank?
@@ -34,6 +34,12 @@ class Page < ActiveRecord::Base
   end
   
   def reprocess_images!
-    images.each(&:reprocess_picture!)
+    images.map do |image|
+      Thread.new do
+        ActiveRecord::Base.connection_pool.with_connection do
+          image.reprocess_picture!
+        end
+      end
+    end.each(&:join)
   end
 end
