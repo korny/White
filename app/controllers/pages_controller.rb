@@ -1,8 +1,8 @@
 class PagesController < ApplicationController
-  skip_before_filter :login_required
+  skip_before_filter :login_required, only: [:index, :show]
   
-  before_action :set_section, :only => [:show, :create, :update, :destroy]
-  before_action :set_page,    :only => [:show,          :update, :destroy]
+  before_action :set_section, only: [:show, :create, :reorder, :update, :destroy]
+  before_action :set_page,    only: [:show,                    :update, :destroy]
   
   def index
     @section = Section.welcome_section
@@ -16,6 +16,12 @@ class PagesController < ApplicationController
   
   def create
     @page = @section.pages.create!(page_params)
+  end
+  
+  def reorder
+    @section.pages.update_order params[:ids].map(&:to_i)
+    
+    head :ok
   end
   
   def update

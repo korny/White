@@ -19,12 +19,10 @@ ul.sidebar
   & ul
     padding-left: 0
   
-  .admin
+  .admin, .empty-section-title
     display: none
-  li.page:hover > .admin
+  li.page:hover .admin, &:hover .add-page, &:hover .empty-section-title
     display: inline
-  li.section:hover li.add-page .admin
-    display: block
   
   .admin
     color: gray
@@ -41,3 +39,6 @@ ul.sidebar
   + .content
     margin-left: $sidebar-width + 10px
     margin-top:  $sidebar-top + 5px
+
+ul.ui-sortable > li[data-id]
+  cursor: move

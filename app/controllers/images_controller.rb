@@ -12,10 +12,7 @@ class ImagesController < ApplicationController
   end
   
   def reorder
-    ids = params[:ids].map(&:to_i).uniq
-    if ids.size == @page.images.size
-      @page.update_images_order ids
-    end
+    @page.images.update_order params[:ids].map(&:to_i)
     
     head :ok
   end

@@ -1,10 +1,12 @@
-%ul.sidebar
+%ul.sidebar{ data: current_user && { sort_update_url: reorder_sections_path } }
   - for section in sidebar_sections
-    %li.section
+    %li.section{ data: { id: section.id } }
       - if section.title.present?
         %span.section-title= section.title
-      %ul
+      - elsif current_user
+        %span.section-title.empty-section-title [no title]
+      - if current_user
+        = render 'layouts/sidebar_add_page', section: section
+      %ul{ data: current_user && { sort_update_url: reorder_section_pages_path(section) } }
         - for page in section.pages
-          = render 'layouts/sidebar_page',     section: section, page: page
-        - if current_user
-          = render 'layouts/sidebar_add_page', section: section
+          = render 'layouts/sidebar_page', section: section, page: page
