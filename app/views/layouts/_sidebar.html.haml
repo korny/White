@@ -16,5 +16,6 @@
       %ul{ data: current_user && { sort_update_url: reorder_section_pages_path(section) } }
         - for page in section.pages
           = render 'layouts/sidebar_page', section: section, page: page
-  %li.admin.add-section
-    = link_to '+', sections_path, class: 'admin add-section', title: 'add section', remote: true, method: :post, data: { prompt: { message: 'Enter a section title:', param: 'section[title]' } }
+  - if current_user
+    %li.admin.add-section
+      = link_to '+', sections_path, class: 'admin add-section', title: 'add section', remote: true, method: :post, data: { prompt: { message: 'Enter a section title:', param: 'section[title]' } }
