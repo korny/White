@@ -1,12 +1,20 @@
 %ul.sidebar{ data: current_user && { sort_update_url: reorder_sections_path } }
   - for section in sidebar_sections
     %li.section{ data: { id: section.id } }
-      - if section.title.present?
-        %span.section-title= section.title
+      - if section.title_visible?
+        - if current_user
+          = link_to section.title, section, class: 'section-title', title: 'change title', remote: true, method: :patch, data: { prompt: { message: 'Enter a new title:', default: section.title, param: 'section[title]' } }
+        - else
+          %span.section-title= section.title
       - elsif current_user
-        %span.section-title.empty-section-title [no title]
+        .empty-section-title
+          = link_to section.title, section, class: 'section-title', title: 'change title', remote: true, method: :patch, data: { prompt: { message: 'Enter a new title:', default: section.title, param: 'section[title]' } }
       - if current_user
         = render 'layouts/sidebar_add_page', section: section
+        - if section.can_be_deleted?
+          = link_to raw('&times;'), section, class: 'admin', title: 'delete section', remote: true, method: :delete, data: { confirm: "Do you really want to delete “#{section.title}”?" }
       %ul{ data: current_user && { sort_update_url: reorder_section_pages_path(section) } }
         - for page in section.pages
           = render 'layouts/sidebar_page', section: section, page: page
+  %li.admin.add-section
+    = link_to '+', sections_path, class: 'admin add-section', title: 'add section', remote: true, method: :post, data: { prompt: { message: 'Enter a section title:', param: 'section[title]' } }

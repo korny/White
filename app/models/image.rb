@@ -25,6 +25,8 @@ class Image < ActiveRecord::Base
   
   before_validation :set_url_title_from_filename, if: :picture?, on: :create
   
+  before_save :set_bottom_position
+  
   after_save -> { reload.reprocess_picture! }, if: :long_side_changed?
   
   def size_for_thumbnail

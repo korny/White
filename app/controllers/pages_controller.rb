@@ -1,8 +1,8 @@
 class PagesController < ApplicationController
   skip_before_filter :login_required, only: [:index, :show]
   
-  before_action :set_section, only: [:show, :create, :reorder, :update, :destroy]
-  before_action :set_page,    only: [:show,                    :update, :destroy]
+  before_action :set_section, except: :index
+  before_action :set_page,    only: [:show, :update, :destroy]
   
   def index
     @section = Section.welcome_section
@@ -36,6 +36,8 @@ class PagesController < ApplicationController
   
   def set_section
     @section = Section.find_by!(url_title: params[:section_id])
+  rescue
+    redirect_to root_url
   end
   
   def set_page

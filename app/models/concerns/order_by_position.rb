@@ -4,8 +4,6 @@ module OrderByPosition
   included do
     default_scope { order(:position) }
     
-    before_save :set_position
-    
     validates :position, presence: true, numericality: true, allow_nil: true
     
     after_destroy :cleanup_positions
@@ -25,10 +23,16 @@ module OrderByPosition
   
   protected
   
-  def set_position
+  def set_top_position
     order_scope.try(:update_all, 'position = position + 1')
     
     self.position = 1
+  end
+  
+  def set_bottom_position
+    if siblings = order_scope
+      self.position ||= (siblings.maximum(:position) || 0) + 1
+    end
   end
   
   def cleanup_positions

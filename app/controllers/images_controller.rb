@@ -1,7 +1,7 @@
 class ImagesController < ApplicationController
-  before_action :set_section, only: [:create, :reorder]
-  before_action :set_page,    only: [:create, :reorder]
-  before_action :set_image,   only: [:update, :destroy]
+  before_action :set_section, only:   [:create, :reorder]
+  before_action :set_page,    only:   [:create, :reorder]
+  before_action :set_image,   except: [:create, :reorder]
   
   def create
     image = @page.images.build

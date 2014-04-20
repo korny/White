@@ -21,8 +21,13 @@ ul.sidebar
   
   .admin, .empty-section-title
     display: none
-  li.page:hover .admin, &:hover .add-page, &:hover .empty-section-title
+  li.page:hover .admin
     display: inline
+  li.section:hover > .admin
+    display: inline
+  &:hover
+    .add-section, .empty-section-title
+      display: inline
   
   .admin
     color: gray
