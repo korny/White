@@ -31,7 +31,7 @@ module OrderByPosition
   
   def set_bottom_position
     if siblings = order_scope
-      self.position ||= (siblings.maximum(:position) || 0) + 1
+      self.position = (siblings.maximum(:position) || 0) + 1
     end
   end
   

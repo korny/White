@@ -8,7 +8,7 @@ class Section < ActiveRecord::Base
   
   validates_url_title_unique
   
-  before_save :set_bottom_position
+  before_create :set_bottom_position
   
   def self.welcome_section
     joins(:pages).where('pages.id IS NOT NULL').first

@@ -15,7 +15,7 @@ class Page < ActiveRecord::Base
   
   after_initialize :set_title
   
-  before_save :set_top_position
+  before_create :set_top_position
   
   after_save :reprocess_images!, if: :images_zoom_factor_changed?
   
