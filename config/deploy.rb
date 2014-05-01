@@ -4,6 +4,9 @@ lock '3.2.0'
 set :application, 'White'
 set :repo_url, 'git@github.com:korny/White.git'
 
+# use the same ruby as used locally for deployment
+# set :rvm1_ruby_version, '2.1.0'
+
 # Default branch is :master
 set :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }
 

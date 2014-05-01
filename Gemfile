@@ -52,6 +52,7 @@ gem 'kramdown'
 
 # Use Capistrano for deployment
 gem 'capistrano-rails', require: false, group: :development
+gem 'rvm1-capistrano3', require: false
 
 # Silence asset logging
 gem 'quiet_assets', group: :development
