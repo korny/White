@@ -12,7 +12,7 @@
 //
 //= require jquery
 //= require jquery.turbolinks
-//= require jquery.ui.sortable
+//= require jquery-ui/sortable
 //= require jquery_ujs
 //= require jquery.fancybox
 //= require jquery_ujs.prompt
