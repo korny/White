@@ -25,10 +25,16 @@ class Image < ActiveRecord::Base
   
   before_validation :set_url_title_from_filename, if: :picture?, on: :create
   
+  before_create :set_bottom_position
+  
   after_save -> { reload.reprocess_picture! }, if: :long_side_changed?
   
+  def zoom_factor
+    page.images_zoom_factor / 100.0
+  end
+  
   def size_for_thumbnail
-    (long_side * (page.images_zoom_factor / 100.0)).round
+    (long_side * zoom_factor).round
   end
   
   def reprocess_picture!

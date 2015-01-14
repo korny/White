@@ -18,7 +18,7 @@ module UrlTitle
   protected
   
   def set_url_title
-    self.url_title ||= unique_url_title(title.parameterize) if title?
+    self.url_title = unique_url_title(title.parameterize) if title? && (title_changed? || url_title.blank?)
   end
   
   def unique_url_title title

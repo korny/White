@@ -1,8 +1,8 @@
 class PagesController < ApplicationController
-  skip_before_filter :login_required
+  skip_before_filter :login_required, only: [:index, :show]
   
-  before_action :set_section, :only => [:show, :update]
-  before_action :set_page,    :only => [:show, :update]
+  before_action :set_section, except: :index
+  before_action :set_page,    only: [:show, :update, :destroy]
   
   def index
     @section = Section.welcome_section
@@ -14,16 +14,30 @@ class PagesController < ApplicationController
   def show
   end
   
-  def update
-    @page.update! page_params
+  def create
+    @page = @section.pages.create!(page_params)
+  end
+  
+  def reorder
+    @section.pages.update_order params[:ids].map(&:to_i)
     
-    reload_page
+    head :ok
+  end
+  
+  def update
+    @page.update!(page_params)
+  end
+  
+  def destroy
+    @page.destroy!
   end
   
   private
   
   def set_section
     @section = Section.find_by!(url_title: params[:section_id])
+  rescue
+    redirect_to root_url
   end
   
   def set_page
@@ -31,7 +45,7 @@ class PagesController < ApplicationController
   end
   
   def page_params
-    params.require(:page).permit(:images_zoom_factor, :text).tap do |page_params|
+    params.require(:page).permit(:title, :images_zoom_factor, :text).tap do |page_params|
       page_params[:text].encode! universal_newline: true if page_params[:text]
     end
   end

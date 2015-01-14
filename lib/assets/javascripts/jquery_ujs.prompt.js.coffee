@@ -4,7 +4,7 @@ $.rails.prompt = (message, defaultValue) ->
 $.rails.handlePrompt = (element) ->
   config = element.data('prompt')
   message      = config.message || config
-  defaultValue = config.default
+  defaultValue = config.default || ''
   param        = config.param || 'value'
   return true unless message
   

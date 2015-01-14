@@ -12,13 +12,38 @@ ul.sidebar
   background-color: white
   
   > li
-    margin-bottom: 12px
+    padding-bottom: 12px
   
   &, & ul
     list-style-type: none
   & ul
     padding-left: 0
   
+  .admin, .empty-section-title
+    display: none
+  li.page:hover .admin
+    display: inline
+  li.section:hover > .admin
+    display: inline
+  &:hover
+    .add-section, .empty-section-title
+      display: inline
+  
+  .admin
+    color: gray
+    &:hover
+      color: black
+  
+  .section-title
+    color: #666
+  
+  .current
+    color: black
+    font-size: 20px
+  
   + .content
     margin-left: $sidebar-width + 10px
     margin-top:  $sidebar-top + 5px
+
+ul.ui-sortable > li[data-id]
+  cursor: move

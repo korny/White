@@ -1,0 +1,3 @@
+- page = section.dup.pages.build
+
+= link_to '+', [section, page], class: 'admin add-page', title: 'add page', remote: true, method: :post, data: { prompt: { message: 'Enter a page title:', default: page.title, param: 'page[title]' } }

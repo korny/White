@@ -8,12 +8,22 @@ class Section < ActiveRecord::Base
   
   validates_url_title_unique
   
+  before_create :set_bottom_position
+  
   def self.welcome_section
-    first
+    joins(:pages).where('pages.id IS NOT NULL').first
   end
   
   def welcome_page
     pages.first
+  end
+  
+  def title_visible?
+    !title.start_with?('-')
+  end
+  
+  def can_be_deleted?
+    pages.empty?
   end
   
   protected

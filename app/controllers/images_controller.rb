@@ -1,7 +1,7 @@
 class ImagesController < ApplicationController
-  before_action :set_section, only: [:create, :reorder]
-  before_action :set_page,    only: [:create, :reorder]
-  before_action :set_image,   only: [:update, :destroy]
+  before_action :set_section, only:   [:create, :reorder]
+  before_action :set_page,    only:   [:create, :reorder]
+  before_action :set_image,   except: [:create, :reorder]
   
   def create
     image = @page.images.build
@@ -12,10 +12,7 @@ class ImagesController < ApplicationController
   end
   
   def reorder
-    ids = params[:ids].map(&:to_i).uniq
-    if ids.size == @page.images.size
-      @page.update_images_order ids
-    end
+    @page.images.update_order params[:ids].map(&:to_i)
     
     head :ok
   end

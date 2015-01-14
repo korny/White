@@ -13,24 +13,33 @@ class Page < ActiveRecord::Base
   
   validates_url_title_unique scope: [:section_id]
   
-  after_save :reprocess_images!, if: :images_zoom_factor_changed?
+  after_initialize :set_title
   
-  def update_images_order image_ids
-    transaction do
-      image_ids.each_with_index do |id, index|
-        Image.where(:id => id).update_all ['position = ?', index + 1]
-      end
-      touch
-    end
+  before_create :set_top_position
+  
+  after_commit :reprocess_images!, if: -> { previous_changes.key? :images_zoom_factor }
+  
+  def can_be_deleted?
+    images.empty? && text.blank?
   end
   
   protected
+  
+  def set_title
+    self.title ||= Date.today.year.to_s
+  end
   
   def order_scope
     section.try(:pages)
   end
   
   def reprocess_images!
-    images.each(&:reprocess_picture!)
+    images.map do |image|
+      Thread.new do
+        ActiveRecord::Base.connection_pool.with_connection do
+          image.reprocess_picture!
+        end
+      end
+    end.each(&:join)
   end
 end

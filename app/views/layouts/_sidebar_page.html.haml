@@ -1,0 +1,13 @@
+%li.page{ data: { id: page.id } }
+  - if page == @page
+    .current
+      - if current_user
+        = link_to page.title,       [section, page], class: 'current', title: 'change title', remote: true, method: :patch,  data: { prompt: { message: 'Enter a new title:',       default: page.title,              param: 'page[title]' } }
+        - if page.images.any?
+          = link_to '%',            [section, page], class: 'admin',   title: 'change zoom',  remote: true, method: :patch,  data: { prompt: { message: 'Enter a new zoom factor:', default: page.images_zoom_factor, param: 'page[images_zoom_factor]' } }
+        - if page.can_be_deleted?
+          = link_to raw('&times;'), [section, page], class: 'admin',   title: 'delete page',  remote: true, method: :delete, data: { confirm: "Do you really want to delete “#{page.title}”?" }
+      - else
+        %span= page.title
+  - else
+    = link_to page.title, page == welcome_page ? root_path : [section, page]
